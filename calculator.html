@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        main{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100dvh;
+            width: 100%;
+            background-color: rgb(34, 34, 34);
+        }
+        section{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 70dvh;
+            width: 50dvh;
+            background-color:rgb(34, 34, 34);
+            box-shadow: 5px 5px 30px seagreen;
+            border-radius: 5px;
+        }
+        .display{
+            margin-top: 40px;
+            height: 10dvh;
+            width: 40dvh;
+            border-radius: 5px;
+            background-color:rgb(34, 34, 34);
+            box-shadow: 5px 5px 30px seagreen;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 25px;
+            color: white;
+            text-align: right;
+        }
+        .buttons{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 15px;
+            height: 60dvh;
+            width: 45dvh;
+        }
+        .btn{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: seagreen;
+            font-size: 20px;
+            height: 8dvh;
+            width: 8dvh;
+            margin: 5px;
+            background-color:rgb(24, 24, 24);
+            box-shadow: 2px 2px 5px seagreen;
+            border-radius: 5px;
+            font-family: 'Orbitron', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section>
+                <input type="text" class="display" id="res" readonly>
+            <div class="buttons">
+            <input class="btn" type="button" onclick="Clear()" style="color: orange; box-shadow: 2px 2px 5px orange; " value="AC">
+                <input class="btn" type="button" onclick="Back()" style="color: orange;box-shadow: 2px 2px 5px orange;" value="DE">
+                <input class="btn" type="button" onclick="solve('.')" style="color: orange;box-shadow: 2px 2px 5px orange;" value=".">
+                <input class="btn" type="button" onclick="solve('/')" style="color: orange;box-shadow: 2px 2px 5px orange;" value="/">
+                <input class="btn" type="button" onclick="solve('7')" value="7">
+                <input class="btn" type="button" onclick="solve('8')" value="8">
+                <input class="btn" type="button" onclick="solve('9')" value="9">
+                <input class="btn" type="button" onclick="solve('*')" style="color: orange;box-shadow: 2px 2px 5px orange;" value="*">
+                <input class="btn" type="button" onclick="solve('4')" value="4">
+                <input class="btn" type="button" onclick="solve('5')" value="5">
+                <input class="btn" type="button" onclick="solve('6')" value="6">
+                <input class="btn" type="button" onclick="solve('-')" style="color: orange;box-shadow: 2px 2px 5px orange;" value="-">
+                <input class="btn" type="button" onclick="solve('1')" value="1">
+                <input class="btn" type="button" onclick="solve('2')" value="2">
+                <input class="btn" type="button" onclick="solve('3')" value="3">
+                <input class="btn" type="button" onclick="solve('+')" style="color: orange;box-shadow: 2px 2px 5px orange;" value="+">
+                <input class="btn" type="button" onclick="solve('00')" value="00">
+                <input class="btn" type="button" onclick="solve('0')" value="0">
+                <input class="btn" type="button" onclick="result('=')" style="color: orange;box-shadow: 2px 2px 5px orange;" value="=">
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function solve(val){
+            let v = document.getElementById('res').value +=val
+        }
+
+        function result(){
+            let exp1 = document.getElementById('res').value
+            try{
+                let num = eval(exp1)
+                document.getElementById('res').value = num
+            }
+            catch(error){
+                document.getElementById('res').value = error
+                
+            }
+        }
+
+        function Back(){
+            document.getElementById('res').value = document.getElementById('res').value.slice(0, -1);
+        }
+
+        function Clear(){
+            document.getElementById('res').value = ''
+        }
+    </script>
+</body>
+</html>
